@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+:root {
+    --font-mona: "Mona Sans", sans-serif;
+    --main-color: #121212;
+    --card-color: #1a1a1a;
+    --text-primary: #ffffff;
+    --text-muted: #888888;
+    --border-color: #262626;
+}

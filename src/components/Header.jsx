@@ -39,7 +39,7 @@ const Header = () => {
 
 
   return (
-    <div className=" h-16 flex items-center justify-between fixed top-0 w-screen pl-10 pr-10 text-[var(--text-primary)] backdrop-blur-xl">
+    <div className=" h-10 sm:h-16 flex items-center justify-between fixed top-0 w-screen pl-3 md:pl-10 pr-3 md:pr-10 text-[var(--text-primary)] backdrop-blur-xl z-50">
       {/* Left Side */}
       <div className="flex items-center cursor-pointer ">
         {/* logo */}
@@ -95,7 +95,7 @@ const Header = () => {
         </div>
 
         {/* User Profile */}
-        <div className="h-7 sm:h-8">
+        <div className="h-5 sm:h-8">
           <img className="h-full rounded" src={USER_LOGO} alt="" />
         </div>
       </div>

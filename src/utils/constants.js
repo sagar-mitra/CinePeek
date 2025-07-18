@@ -5,7 +5,7 @@ export const USER_LOGO =
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization: import.meta.env.API_AUTHORIZATION
+    Authorization: import.meta.env.VITE_API_AUTHORIZATION
   }
 };
 

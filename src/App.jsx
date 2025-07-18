@@ -6,15 +6,17 @@ import { useDispatch } from "react-redux";
 import { setBannerData } from "./store/cinePeekSlice";
 
 const App = () => {
-
   const dispatch = useDispatch();
 
   // Fetch Trending Movies
   const getNowPlayingMovies = async () => {
     try {
-      const res = await fetch("https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",API_OPTIONS);
+      const res = await fetch(
+        "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
+        API_OPTIONS
+      );
       const nowPlayingData = await res.json();
-      dispatch(setBannerData(nowPlayingData?.results))
+      dispatch(setBannerData(nowPlayingData?.results));
     } catch (error) {
       console.log(error);
     }
@@ -27,9 +29,7 @@ const App = () => {
   return (
     <div className="font-(family-name:--font-mona) min-h-screen bg-[var(--main-color)]">
       <Header />
-      <div>
-        <Outlet />
-      </div>
+      <Outlet />
     </div>
   );
 };

@@ -1,28 +1,20 @@
-import { useSelector } from 'react-redux'
-import { IMAGE_URL } from '../utils/constants';
+import { useSelector } from "react-redux";
+import BannerItem from "./BannerItem";
 
 const Banner = () => {
-    const bannerData = useSelector((store) => store.cinepeek.bannerData)
-    
-    if(bannerData.length === 0) return;
+  const bannerData = useSelector((store) => store.cinepeek.bannerData);
 
-    console.log(bannerData);
+  if (bannerData.length === 0) return;
 
   return (
-    <section className='w-full h-full'>
-        <div className='flex w-full h-full'>
-            {
-               bannerData.map((item) => {
-                    return(
-                        <div key={item.id} className='min-w-full min-h-full'>
-                            <img className='w-full h-full' src={IMAGE_URL+item.backdrop_path} alt="" />
-                        </div>
-                    )
-                })
-            }
-        </div>
+    <section className="w-full h-full">
+      <div className="flex ">
+        {bannerData.map((item) => {
+          return <BannerItem key={item.id} item={item}/>
+        })}
+      </div>
     </section>
-  )
-}
+  );
+};
 
-export default Banner
+export default Banner;

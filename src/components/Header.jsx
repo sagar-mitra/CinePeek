@@ -37,7 +37,6 @@ const Header = () => {
     }
   };
 
-  console.log(window.innerWidth);
 
   return (
     <div className=" h-16 flex items-center justify-between fixed top-0 w-screen pl-10 pr-10 text-[var(--text-primary)] backdrop-blur-xl">
@@ -45,7 +44,7 @@ const Header = () => {
       <div className="flex items-center cursor-pointer ">
         {/* logo */}
         <div className="mr-10">
-          <h1 className="font-bold text-2xl">MovieQ</h1>
+          <h1 className="font-bold text-2xl">CinePeek</h1>
         </div>
         {/* Nav Items  */}
         <div className="max-sm:hidden">
@@ -70,7 +69,7 @@ const Header = () => {
       </div>
 
       {/* Right Side  */}
-      <div className="flex gap-10 ">
+      <div className="flex gap-10 cursor-pointer ">
         {/* Search  */}
         <div className="flex items-center">
           <i className="bx  bx-search text-2xl mr-1" onClick={handleSearch}></i>

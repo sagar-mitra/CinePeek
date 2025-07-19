@@ -6,12 +6,12 @@ const useGetLogo = (id) => {
 
   const getLogo = async () => {
     const res = await fetch(
-      `https://api.themoviedb.org/3/movie/${id}/images?include_image_language=en`,
+      `https://api.themoviedb.org/3/movie/${id}/images?include_image_language=en,null`,
       API_OPTIONS
     );
     const logoData = await res.json();
-    // console.log(logoData.logos[0].file_path);
-    setLogo(logoData?.logos[0]?.file_path)
+    console.log(logoData);
+    setLogo(logoData?.backdrops[4]?.file_path)
   };
 
   useEffect(() => {

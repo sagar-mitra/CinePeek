@@ -16,6 +16,7 @@ const App = () => {
         API_OPTIONS
       );
       const nowPlayingData = await res.json();
+      console.log(nowPlayingData);
       dispatch(setBannerData(nowPlayingData?.results));
     } catch (error) {
       console.log(error);
@@ -27,7 +28,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="font-(family-name:--font-mona) min-h-screen bg-[var(--main-color)]">
+    <div className="font-(family-name:--font-mona)  bg-[var(--main-color)]">
       <Header />
       <Outlet />
     </div>

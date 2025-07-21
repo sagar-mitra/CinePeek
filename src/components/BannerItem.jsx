@@ -1,26 +1,20 @@
-import useGetLogo from "../hooks/useGetLogo";
 import { IMAGE_URL } from "../utils/constants";
 import { motion } from "framer-motion";
 import { FaAngleRight } from "react-icons/fa6";
 import { FaAngleLeft } from "react-icons/fa6";
 
-const BannerItem = ({ item, handleRight, handleLeft }) => {
-  // const logo = useGetLogo(item.id);
-  // if (!logo) return;
-  // console.log(item);
-
-  // console.log(logo);
-
+const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
   const { backdrop_path, overview, title } = item;
   return (
     item && (
-      <div className="min-w-full  lg:min-h-screen max-h-full relative group transition-all duration-700">
+      <div className="min-w-full h-full xl:min-h-screen max-h-[900px] relative group transition-all duration-700 ">
+        {/* Banner Image  */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 1.3 }}
-          className="w-full h-full"
+          className="w-full h-full border-b border-[var(--main-color)]"
         >
           <motion.img
             className="w-full max-h-full min-h-[450px] md:min-h-[600px] lg:max-h-screen object-cover object-top  "
@@ -30,13 +24,15 @@ const BannerItem = ({ item, handleRight, handleLeft }) => {
         </motion.div>
 
         {/* black overlay */}
-        <div className="absolute top-0 w-full h-full bg-gradient-to-t from-[var(--main-color)] to-transparent" />
+          <div className="absolute top-0 w-full h-full bg-gradient-to-t from-[var(--main-color)] to-transparent " />
+        
 
         {/* Left and Right Pointers */}
         <div className="absolute w-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:hidden justify-between px-5 cursor-pointer z-20 sm:group-hover:flex ">
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.6, transition: { duration: 0.5 } }}
+            className={`${imageIndex === 0 && "invisible"}`}
           >
             <FaAngleLeft
               className="lg:text-3xl text-white/70 hover:text-white/90 transition-colors duration-300"
@@ -46,6 +42,7 @@ const BannerItem = ({ item, handleRight, handleLeft }) => {
           <motion.div
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.8, transition: { duration: 0.5 } }}
+            className={`${imageIndex === length && "invisible"}`}
           >
             <FaAngleRight
               className="lg:text-3xl text-white/70 hover:text-white/90 transition-colors duration-300"
@@ -55,8 +52,7 @@ const BannerItem = ({ item, handleRight, handleLeft }) => {
         </div>
 
         {/* movie info  */}
-  
-          <div className="container mx-auto absolute top-1/2 left-1/2 -translate-x-1/2   max-sm:pl-3 max-lg:pl-2 lg:pl-20   ">
+          <div className="container mx-auto absolute top-1/2 left-1/2 -translate-x-1/2   max-sm:pl-3 max-lg:pl-2 lg:pl-20">
             {/* movie logo  */}
             {/* <img
           className="h-10 sm:h-15 md:h-20  lg:w-2xl object-contain object-left"

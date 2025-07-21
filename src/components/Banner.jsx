@@ -44,6 +44,8 @@ const Banner = () => {
                   item={item}
                   handleRight={handleRight}
                   handleLeft={handleLeft}
+                  imageIndex={imageIndex}
+                  length = {bannerData.length - 1}
                 />
               )
             );

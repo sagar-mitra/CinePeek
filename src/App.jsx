@@ -16,8 +16,7 @@ const App = () => {
         API_OPTIONS
       );
       const nowPlayingData = await res.json();
-      console.log(nowPlayingData);
-      dispatch(setBannerData(nowPlayingData?.results));
+      dispatch(setBannerData(nowPlayingData?.results.slice(0,16)));
     } catch (error) {
       console.log(error);
     }

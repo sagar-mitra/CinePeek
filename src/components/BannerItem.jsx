@@ -7,7 +7,7 @@ const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
   const { backdrop_path, overview, title } = item;
   return (
     item && (
-      <div className="min-w-full h-full xl:min-h-screen max-h-[900px] relative group transition-all duration-700 ">
+      <div className="min-w-full h-full xl:min-h-screen max-h-[900px] relative group transition-all duration-700">
         {/* Banner Image  */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -52,7 +52,7 @@ const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
         </div>
 
         {/* movie info  */}
-          <div className="container mx-auto absolute top-1/2 left-1/2 -translate-x-1/2   max-sm:pl-3 max-lg:pl-2 lg:pl-20">
+          <div className="max-lg:flex flex-col items-center w-[300px] max-w-[300px]  sm:min-w-[440px] sm:max-w-[450px] lg:min-w-[530px]  lg:max-w-[530px] absolute top-1/2 lg:top-1/3 left-1/2 lg:left-30 max-lg:-translate-x-1/2 ">
             {/* movie logo  */}
             {/* <img
           className="h-10 sm:h-15 md:h-20  lg:w-2xl object-contain object-left"
@@ -64,26 +64,22 @@ const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.2 }}
-              className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold max-lg:text-center"
             >
               {title}
             </motion.h1>
 
             {/* movie desc  */}
-            <p className="w-56 sm:w-80 md:w-md lg:5/12 text-[10px] md:text-base text-ellipsis line-clamp-2 pl-1 tracking-wide text-[var(--text-muted)] leading-3 md:leading-4 lg:leading-5 mt-2 md:mt-4">
+            <p className="w-56 sm:w-80 md:w-md lg:5/12 text-[10px] md:text-[15px] text-ellipsis line-clamp-3 pl-1 tracking-wide text-[var(--text-muted)] leading-3 md:leading-5 lg:leading-6 mt-2 md:mt-4 text-center">
               {overview}
             </p>
 
             {/* play and more info button  */}
             <div className="mt-2 md:mt-4 ml-1 flex gap-2">
-              <motion.button className="text-[7px] md:text-sm px-2 py-0.5 shadow-md md:px-6 md:py-2 lg:px-9 lg:py-4 lg:font-semibold lg:text-base rounded font-medium tracking-wide bg-neutral-100 text-[var(--main-color)] flex items-center cursor-pointer">
+              <motion.button className="text-[10px] md:text-base shadow-md px-3 py-2 md:px-6 md:py-3 lg:px-9 lg:py-4 lg:font-semibold lg:text-base rounded font-medium tracking-wide bg-neutral-100 text-[var(--main-color)] flex items-center cursor-pointer">
                 <i className="bx  bx-play text-sm md:text-xl"></i>
-                <span>Play</span>
+                <span>Watch Trailer</span>
               </motion.button>
-              <button className="text-[7px] md:text-sm px-2 shadow-md py-0.5 md:px-6 md:py-2 lg:px-9 lg:py-4 lg:text-base lg:font-semibold rounded font-medium tracking-wide bg-neutral-100/60 text-[var(--main-color)] flex items-center gap-1 cursor-pointer">
-                <i className="bx  bx-info-circle text-sm md:text-xl"></i>
-                <span>More Info</span>
-              </button>
             </div>
           </div>
         

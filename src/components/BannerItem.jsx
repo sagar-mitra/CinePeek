@@ -83,7 +83,8 @@ const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold max-lg:text-center"
+            className="font-(family-name:--font-anton) text-[var(--text-primary)] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-md max-lg:text-center tracking-wide"
+        
           >
             {title}
           </motion.h1>
@@ -92,7 +93,7 @@ const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.9, delay: 0.5 }}
-            className=" w-full flex items-center justify-between text-[9px] sm:text-xs md:text-sm px-10 sm:px-14 md:px-11 lg:px-0 lg:pr-38 mt-2 md:mt-4 "
+            className="text-[var(--text-secondary)] w-full flex items-center justify-between text-[9px] sm:text-xs md:text-sm px-10 sm:px-14 md:px-11 lg:px-0 lg:pr-38 mt-2 md:mt-4 "
           >
             <div className="flex items-center gap-1 ">
               <img
@@ -115,11 +116,11 @@ const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
           </motion.div>
 
           {/* movie desc  */}
-          <p className="w-56 sm:w-80 md:w-md lg:5/12 text-[10px] md:text-[15px] text-ellipsis line-clamp-3 pl-1 tracking-wide text-[var(--text-muted)] leading-3 md:leading-5 lg:leading-6 mt-2 md:mt-4 max-lg:text-center">
+          <p className="w-56 sm:w-80 md:w-md lg:5/12 text-[10px] md:text-[15px] text-ellipsis line-clamp-3 pl-1 tracking-wide text-[var(--text-secondary)] leading-4 md:leading-5 lg:leading-6 mt-2 md:mt-4 max-lg:text-center">
             {overview}
           </p>
 
-          {/* play and more info button  */}
+          {/* Watch Trailer Button  */}
           <div className="mt-2 md:mt-4 ml-1 flex gap-2  ">
             <motion.button
               whileTap={{ scale: 0.9 }}

@@ -18,7 +18,7 @@ const HorizontalScrollCard = ({ data, heading }) => {
             transition={{ duration: 0.4 }}
             className="flex items-center gap-0.5 cursor-pointer text-red-500"
           >
-            <p className="font-medium text-sm sm:text-base tracking-wide">
+            <p className="font-medium text-xs sm:text-sm tracking-wide">
               See All
             </p>
             <div whileHover={{ scale: 1.02 }}>

@@ -1,10 +1,30 @@
-import { IMAGE_URL } from "../utils/constants";
+import { API_OPTIONS, IMAGE_URL, IMDB_LOGO } from "../utils/constants";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { FaAngleRight } from "react-icons/fa6";
 import { FaAngleLeft } from "react-icons/fa6";
+import useMovieInfo from "../hooks/useMovieInfo";
+import { useSelector } from "react-redux";
+import { span } from "framer-motion/client";
 
 const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
   const { backdrop_path, overview, title } = item;
+
+  useMovieInfo(item.id);
+
+  const movieInfoData = useSelector((store) => store.cinepeek.movieInfo);
+
+  if (movieInfoData.length === 0) return;
+
+  const { genres, release_date, runtime, vote_average } = movieInfoData;
+
+  const release_year = release_date.split("-")[0];
+  const totalMinutes = runtime;
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+
+  console.log(genres);
+
   return (
     item && (
       <div className="min-w-full h-full xl:min-h-screen max-h-[900px] relative group transition-all duration-700">
@@ -24,8 +44,7 @@ const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
         </motion.div>
 
         {/* black overlay */}
-          <div className="absolute top-0 w-full h-full bg-gradient-to-t from-[var(--main-color)] to-transparent " />
-        
+        <div className="absolute top-0 w-full h-full bg-gradient-to-t from-[var(--main-color)] to-transparent " />
 
         {/* Left and Right Pointers */}
         <div className="absolute w-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:hidden justify-between px-5 cursor-pointer z-20 sm:group-hover:flex ">
@@ -52,37 +71,61 @@ const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
         </div>
 
         {/* movie info  */}
-          <div className="max-lg:flex flex-col items-center w-[300px] max-w-[300px]  sm:min-w-[440px] sm:max-w-[450px] lg:min-w-[530px]  lg:max-w-[530px] absolute top-1/2 lg:top-1/3 left-1/2 lg:left-30 max-lg:-translate-x-1/2 ">
-            {/* movie logo  */}
-            {/* <img
+        <div className="max-lg:flex flex-col items-center w-[300px] max-w-[300px]  sm:min-w-[440px] sm:max-w-[450px] lg:min-w-[530px]  lg:max-w-[530px] absolute top-1/2 lg:top-1/3 left-1/2 lg:left-30 max-lg:-translate-x-1/2 ">
+          {/* movie logo  */}
+          {/* <img
           className="h-10 sm:h-15 md:h-20  lg:w-2xl object-contain object-left"
           src={IMAGE_URL + logo}
           alt=""
         /> */}
 
-            <motion.h1
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.2 }}
-              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold max-lg:text-center"
-            >
-              {title}
-            </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.2 }}
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold max-lg:text-center"
+          >
+            {title}
+          </motion.h1>
 
-            {/* movie desc  */}
-            <p className="w-56 sm:w-80 md:w-md lg:5/12 text-[10px] md:text-[15px] text-ellipsis line-clamp-3 pl-1 tracking-wide text-[var(--text-muted)] leading-3 md:leading-5 lg:leading-6 mt-2 md:mt-4 text-center">
-              {overview}
-            </p>
-
-            {/* play and more info button  */}
-            <div className="mt-2 md:mt-4 ml-1 flex gap-2">
-              <motion.button className="text-[10px] md:text-base shadow-md px-3 py-2 md:px-6 md:py-3 lg:px-9 lg:py-4 lg:font-semibold lg:text-base rounded font-medium tracking-wide bg-neutral-100 text-[var(--main-color)] flex items-center cursor-pointer">
-                <i className="bx  bx-play text-sm md:text-xl"></i>
-                <span>Watch Trailer</span>
-              </motion.button>
+          <motion.div
+          initial={{opacity: 0}}
+          animate={{opacity: 1}}
+          transition={{duration: 0.9, delay:0.5}}
+          className=" w-56 sm:w-80 md:w-md lg:5/12 flex items-center justify-between text-[9px] sm:text-sm sm:px-13 lg:px-0 lg:pr-20 mt-2 md:mt-4">
+            <div className="flex items-center gap-1 ">
+              <img
+                className="rounded max-h-3 sm:max-h-4"
+                src={IMDB_LOGO}
+                alt="imdb_logo"
+              />
+              <span>{Number(vote_average).toFixed(1)} </span>
             </div>
+            <span>•</span>
+            <p>{release_year} </p>
+            <span>•</span>
+            <p>{`${hours}h ${minutes}m`}</p>
+            <span>•</span>
+            <div className="flex gap-2">
+              {genres.slice(0, 2).map((item) => {
+                return <span>{item.name} </span>;
+              })}
+            </div>
+          </motion.div>
+
+          {/* movie desc  */}
+          <p className="w-56 sm:w-80 md:w-md lg:5/12 text-[10px] md:text-[15px] text-ellipsis line-clamp-3 pl-1 tracking-wide text-[var(--text-muted)] leading-3 md:leading-5 lg:leading-6 mt-2 md:mt-4 max-lg:text-center">
+            {overview}
+          </p>
+
+          {/* play and more info button  */}
+          <div className="mt-2 md:mt-4 ml-1 flex gap-2">
+            <motion.button className="text-[10px] md:text-base shadow-md px-3 py-2 md:px-6 md:py-3 lg:px-9 lg:py-4 lg:font-semibold lg:text-base rounded font-medium tracking-wide bg-neutral-100 text-[var(--main-color)] flex items-center cursor-pointer">
+              <i className="bx  bx-play text-sm md:text-xl"></i>
+              <span>Watch Trailer</span>
+            </motion.button>
           </div>
-        
+        </div>
       </div>
     )
   );

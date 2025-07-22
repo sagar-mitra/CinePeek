@@ -32,9 +32,10 @@ const Banner = () => {
     return () => clearInterval(interval);
   }, [imageIndex]);
 
+
   return (
-    bannerData.length !== 0 && (
-      <section className="max-w-screen">
+    bannerData  && (
+      <section className="max-w-screen min-h-[400px] lg:min-h-screen ">
         <div className="flex w-full h-full overflow-hidden">
           {bannerData.map((item, idx) => {
             return (

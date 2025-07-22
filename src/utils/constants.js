@@ -10,3 +10,5 @@ export const USER_LOGO =
 };
 
 export const IMAGE_URL = "https://image.tmdb.org/t/p/original"
+
+export const IMDB_LOGO = "https://i.pinimg.com/736x/45/8b/39/458b399f0f81156fbfc6d53890a9d5bf.jpg"

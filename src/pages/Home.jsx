@@ -5,10 +5,9 @@ import { useSelector } from "react-redux";
 
 const Home = () => {
   const trendingData = useSelector((store) => store.cinepeek.bannerData);
-  console.log(trendingData);
   return (
     trendingData && (
-      <div className="text-[var(--text-primary)] ">
+      <div className="text-[var(--text-primary)] bg-[var(--main-color)] min-h-screen">
         <Banner />
         <HorizontalScrollCard heading="Trending" data={trendingData} />
       </div>

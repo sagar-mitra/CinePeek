@@ -89,10 +89,11 @@ const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
           </motion.h1>
 
           <motion.div
-          initial={{opacity: 0}}
-          animate={{opacity: 1}}
-          transition={{duration: 0.9, delay:0.5}}
-          className=" w-56 sm:w-80 md:w-md lg:5/12 flex items-center justify-between text-[9px] sm:text-sm sm:px-13 lg:px-0 lg:pr-20 mt-2 md:mt-4">
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.9, delay: 0.5 }}
+            className=" w-full flex items-center justify-between text-[9px] sm:text-xs md:text-sm px-10 sm:px-14 md:px-11 lg:px-0 lg:pr-38 mt-2 md:mt-4 "
+          >
             <div className="flex items-center gap-1 ">
               <img
                 className="rounded max-h-3 sm:max-h-4"
@@ -119,8 +120,13 @@ const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
           </p>
 
           {/* play and more info button  */}
-          <div className="mt-2 md:mt-4 ml-1 flex gap-2">
-            <motion.button className="text-[10px] md:text-base shadow-md px-3 py-2 md:px-6 md:py-3 lg:px-9 lg:py-4 lg:font-semibold lg:text-base rounded font-medium tracking-wide bg-neutral-100 text-[var(--main-color)] flex items-center cursor-pointer">
+          <div className="mt-2 md:mt-4 ml-1 flex gap-2  ">
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.04 }}
+              transition={{duration: 0.6}}
+              className="text-[10px] md:text-base shadow-md px-3 py-2 md:px-6 md:py-3 lg:px-9 lg:py-4 lg:font-semibold lg:text-base rounded font-medium tracking-wide bg-[#cc001f]/90 text-white flex items-center cursor-pointer "
+            >
               <i className="bx  bx-play text-sm md:text-xl"></i>
               <span>Watch Trailer</span>
             </motion.button>

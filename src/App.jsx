@@ -3,7 +3,7 @@ import Header from "../src/components/Header";
 import { API_OPTIONS } from "./utils/constants";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setBannerData } from "./store/cinePeekSlice";
+import { setBannerData} from "./store/cinePeekSlice";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -25,6 +25,9 @@ const App = () => {
   useEffect(() => {
     getNowPlayingMovies();
   }, []);
+
+
+ 
 
   return (
     <div className="font-(family-name:--font-mona)  bg-[var(--main-color)]">

@@ -1,11 +1,11 @@
-import { API_OPTIONS, IMAGE_URL, IMDB_LOGO } from "../utils/constants";
+import { IMAGE_URL, IMDB_LOGO } from "../utils/constants";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+
 import { FaAngleRight } from "react-icons/fa6";
 import { FaAngleLeft } from "react-icons/fa6";
 import useMovieInfo from "../hooks/useMovieInfo";
 import { useSelector } from "react-redux";
-import { span } from "framer-motion/client";
+
 
 const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
   const { backdrop_path, overview, title } = item;
@@ -23,7 +23,6 @@ const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
   const hours = Math.floor(totalMinutes / 60);
   const minutes = totalMinutes % 60;
 
-  console.log(genres);
 
   return (
     item && (
@@ -110,7 +109,7 @@ const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
             <span>•</span>
             <div className="flex gap-2">
               {genres.slice(0, 2).map((item) => {
-                return <span>{item.name} </span>;
+                return <span key={item.id}>{item.name} </span>;
               })}
             </div>
           </motion.div>

@@ -1,15 +1,33 @@
-import React from "react";
 import Card from "./Common/card";
 import { FiArrowRight } from "react-icons/fi";
-import { motion, scale } from "framer-motion";
+import { motion } from "framer-motion";
+import { FaAngleRight } from "react-icons/fa6";
+import { FaAngleLeft } from "react-icons/fa6";
+import { useRef } from "react";
 
 const HorizontalScrollCard = ({ data, heading }) => {
-  if(!data) return
+  const containerRef = useRef();
+
+  const handlePrevious = () => {
+    containerRef.current.scrollTo({
+      left: containerRef.current.scrollLeft - 400,
+      behavior: 'smooth',
+    });
+  };
+
+  const handleNext = () => {
+    containerRef.current.scrollTo({
+      left: containerRef.current.scrollLeft + 400,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     data && (
-      <div className="px-7 md:px-10 md:pt-7 pt-10">
+      <div className="px-7 md:px-10 md:pt-7 pt-10 relative">
+        {/* Heading  */}
         <div className="flex justify-between items-center mb-2 md:mb-4">
-          <h1 className="text-lg tracking-wide sm:text-2xl lg:text-3xl font-medium ">
+          <h1 className="text-sm tracking-wide sm:text-base lg:text-lg font-medium ">
             {heading}
           </h1>
           <motion.div
@@ -26,10 +44,25 @@ const HorizontalScrollCard = ({ data, heading }) => {
             </div>
           </motion.div>
         </div>
-        <div className="grid grid-cols-[repeat(auto-fill, _minmax(230px,_300px))] grid-flow-col gap-3 lg:gap-5 overflow-x-auto ">
+
+        {/* Movie Cards  */}
+        <div
+          ref={containerRef}
+          className="relative z-20 grid grid-cols-[repeat(auto-fill, _minmax(110px,_180px))] grid-flow-col gap-3 lg:gap-5 overflow-x-auto scrollbar-hide scroll-smooth transition-all duration-500    "
+        >
           {data.map((item) => {
             return <Card key={item.id} data={item} />;
           })}
+        </div>
+
+        {/* Previous and Next Button */}
+        <div className="absolute top-1/2 left-0 right-0 hidden lg:flex justify-between w-full px-1 sm:px-2 lg:px-3 text-lg ">
+          <button className="cursor-pointer" onClick={handlePrevious}>
+            <FaAngleLeft />
+          </button>
+          <button className="cursor-pointer" onClick={handleNext}>
+            <FaAngleRight />
+          </button>
         </div>
       </div>
     )

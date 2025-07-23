@@ -13,3 +13,7 @@
   --main-bg: #0e0e10;
   --card-bg: #1a1a1d;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

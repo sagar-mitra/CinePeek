@@ -27,14 +27,13 @@ const Banner = () => {
       } else {
         setImageIndex(0);
       }
-    }, 5000);
+    }, 4000);
 
     return () => clearInterval(interval);
-  }, [imageIndex]);
-
+  }, [imageIndex,bannerData]);
 
   return (
-    bannerData  && (
+    bannerData && (
       <section className="max-w-screen min-h-[400px] lg:min-h-screen ">
         <div className="flex w-full h-full overflow-hidden">
           {bannerData.map((item, idx) => {
@@ -46,7 +45,7 @@ const Banner = () => {
                   handleRight={handleRight}
                   handleLeft={handleLeft}
                   imageIndex={imageIndex}
-                  length = {bannerData.length - 1}
+                  length={bannerData.length - 1}
                 />
               )
             );

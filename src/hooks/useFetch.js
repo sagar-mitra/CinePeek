@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { API_OPTIONS } from "../utils/constants";
 
-const useFetch = (type) => {
+const useFetch = (type, list) => {
   const [data, setData] = useState([]);
 
   const movieData = async () => {
     try {
       const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${type}?language=en-US&page=1`,
+        `https://api.themoviedb.org/3/${type}/${list}?language=en-US&page=1`,
         API_OPTIONS
       );
       const resData = await res.json();

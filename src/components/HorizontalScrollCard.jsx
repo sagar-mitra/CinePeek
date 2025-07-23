@@ -18,7 +18,7 @@ const HorizontalScrollCard = ({ data, heading }) => {
 
   return (
     data && (
-      <div className="px-7 md:px-10 md:pt-7 pt-10 relative">
+      <div className="px-7 md:px-10 md:pt-7 pt-10 relative  min-h-[240px] max-h-[240px] sm:min-h-[320px] sm:max-h-[320px] md:min-h-[330px] md:max-h-[330px] lg:min-h-[360px] lg:max-h-[360px]">
         {/* Heading  */}
         <div className="flex justify-between items-center mb-2 md:mb-4">
           <h1 className="text-sm tracking-wide sm:text-base lg:text-lg font-medium ">

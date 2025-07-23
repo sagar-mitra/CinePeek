@@ -9,18 +9,12 @@ const HorizontalScrollCard = ({ data, heading }) => {
   const containerRef = useRef();
 
   const handlePrevious = () => {
-    containerRef.current.scrollTo({
-      left: containerRef.current.scrollLeft - 400,
-      behavior: 'smooth',
-    });
-  };
+    containerRef.current.scrollLeft -= 500;
+  }
 
   const handleNext = () => {
-    containerRef.current.scrollTo({
-      left: containerRef.current.scrollLeft + 400,
-      behavior: 'smooth',
-    });
-  };
+    containerRef.current.scrollLeft += 500;
+  }
 
   return (
     data && (
@@ -48,7 +42,7 @@ const HorizontalScrollCard = ({ data, heading }) => {
         {/* Movie Cards  */}
         <div
           ref={containerRef}
-          className="relative z-20 grid grid-cols-[repeat(auto-fill, _minmax(110px,_180px))] grid-flow-col gap-3 lg:gap-5 overflow-x-auto scrollbar-hide scroll-smooth transition-all duration-500    "
+          className="relative z-20 grid grid-cols-[repeat(auto-fill, _minmax(110px,_180px))] grid-flow-col gap-3 lg:gap-5 overflow-x-auto scrollbar-hide scroll-smooth transition-all duration-700    "
         >
           {data.map((item) => {
             return <Card key={item.id} data={item} />;

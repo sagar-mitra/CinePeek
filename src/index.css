@@ -17,3 +17,21 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+.slick-slide > div {
+  margin: 0 20px;
+}
+
+.slick-slide:first-child > div {
+  margin-left: 0; /* Remove left margin from the first card */
+  margin-right: 0;
+}
+
+.nav-dark {
+  background-color: #0e0e10d3;
+  
+}
+
+.nav-light {
+  background-color: transparent;
+}

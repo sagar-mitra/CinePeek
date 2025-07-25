@@ -12,7 +12,6 @@ const useFetch = (type, list) => {
       );
       const resData = await res.json();
       setData(resData.results)
-      console.log(resData);
     } catch (error) {
         console.log("Error: ", error);
     }

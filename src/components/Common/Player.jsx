@@ -4,12 +4,16 @@ import { MdOutlineKeyboardBackspace } from "react-icons/md";
 
 const Player = () => {
   const navigate = useNavigate()
+  
+  // Movie id from the query
   const { id } = useParams();
 
+  // Trailer data
   const trailer = useTrailer(id);
 
   if (!trailer) return;
-  console.log(trailer);
+
+  // Destructuring the data
   const { key, name, published_at, type } = trailer;
 
   return (

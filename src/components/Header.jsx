@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { USER_LOGO } from "../utils/constants";
 import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 
 const Header = () => {
@@ -10,14 +10,14 @@ const Header = () => {
   const [searchText, setSearchText] = useState("");
 
   const navItems = [
-    { name: "Home", to: "/home", id: 1 },
+    { name: "Home", to: "/", id: 1 },
     { name: "TV Shows", to: "/tv", id: 2 },
     { name: "Movies", to: "/movies", id: 3 },
   ];
 
   const isDesktop = useMediaQuery({ minWidth: 1024 });
   const navigate = useNavigate();
-  
+
   //Navbar BackGround Change
   const navRef = useRef();
   useEffect(() => {
@@ -67,7 +67,8 @@ const Header = () => {
           <ul className="flex gap-9 font-medium cursor-pointer ">
             {navItems.map((nav) => {
               return (
-                <li
+                <Link
+                  to={nav.to}
                   key={nav.id}
                   className={` ${
                     active === nav.name
@@ -77,7 +78,7 @@ const Header = () => {
                   onClick={() => toggleActive(nav.name)}
                 >
                   {nav.name}
-                </li>
+                </Link>
               );
             })}
           </ul>

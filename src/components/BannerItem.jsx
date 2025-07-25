@@ -5,12 +5,15 @@ import { FaAngleRight } from "react-icons/fa6";
 import { FaAngleLeft } from "react-icons/fa6";
 import useMovieInfo from "../hooks/useMovieInfo";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 
 const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
-  const { backdrop_path, overview, title } = item;
+  const navigate = useNavigate()
 
-  useMovieInfo(item.id);
+
+  const {id, backdrop_path, overview, title } = item;
+  useMovieInfo(id);
 
   const movieInfoData = useSelector((store) => store.cinepeek.movieInfo);
 
@@ -22,7 +25,6 @@ const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
   const totalMinutes = runtime;
   const hours = Math.floor(totalMinutes / 60);
   const minutes = totalMinutes % 60;
-
 
   return (
     item && (
@@ -126,6 +128,7 @@ const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
               whileHover={{ scale: 1.04 }}
               transition={{duration: 0.6}}
               className="text-[10px] md:text-base shadow-md px-3 py-2 md:px-6 md:py-3 lg:px-9 lg:py-4 lg:font-semibold lg:text-base rounded font-medium tracking-wide bg-[#cc001f]/90 text-white flex items-center cursor-pointer "
+              onClick={() => navigate(`player/${id}/${title}`)}
             >
               <i className="bx  bx-play text-sm md:text-xl"></i>
               <span>Watch Trailer</span>

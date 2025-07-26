@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --font-anton: "Anton", sans-serif;
-  --font-roboto: "Roboto", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --font-archivo: "Archivo Black", sans-serif;
   --main-color: #121212;
   --card-color: #1a1a1a;
   --text-primary: #ffffff;
@@ -12,6 +12,10 @@
   --border-color: #262626;
   --main-bg: #0e0e10;
   --card-bg: #1a1a1d;
+}
+
+@theme {
+  --breakpoint-xs: 400px;
 }
 
 .scrollbar-hide::-webkit-scrollbar {

@@ -59,9 +59,9 @@ const Header = () => {
       {/* Left Side */}
       <div className="flex items-center cursor-pointer ">
         {/* logo */}
-        <div className="mr-10">
+        <Link to="/" className="mr-10">
           <h1 className="font-bold text-2xl">CinePeek</h1>
-        </div>
+        </Link>
         {/* Nav Items  */}
         <div className="max-sm:hidden">
           <ul className="flex gap-9 font-medium cursor-pointer ">

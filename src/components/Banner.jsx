@@ -3,7 +3,7 @@ import BannerItem from "./BannerItem";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const Banner = () => {
+const Banner = ({type}) => {
   const [imageIndex, setImageIndex] = useState(0);
   const bannerData = useSelector((store) => store.cinepeek.bannerData);
 
@@ -42,6 +42,7 @@ const Banner = () => {
                 <BannerItem
                   key={item.id}
                   item={item}
+                  type={type}
                   handleRight={handleRight}
                   handleLeft={handleLeft}
                   imageIndex={imageIndex}

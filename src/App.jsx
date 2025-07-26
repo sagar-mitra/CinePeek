@@ -30,7 +30,7 @@ const App = () => {
  
 
   return (
-    <div className="font-(family-name:--font-roboto)  bg-[var(--main-color)]">
+    <div className="font-(family-name:--font-inter)  bg-[var(--main-color)]">
       <Header />
       <Outlet />
     </div>

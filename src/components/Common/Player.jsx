@@ -12,7 +12,7 @@ const Player = () => {
   const trailer = useTrailer(id);
 
   if (!trailer) return;
-
+  console.log(id);
   // Destructuring the data
   const { key, name, published_at, type } = trailer;
 

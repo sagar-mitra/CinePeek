@@ -5,7 +5,7 @@ import { FaAngleRight } from "react-icons/fa6";
 import { FaAngleLeft } from "react-icons/fa6";
 import { useRef } from "react";
 
-const HorizontalScrollCard = ({ data, heading }) => {
+const HorizontalScrollCard = ({ data, heading, type }) => {
   const containerRef = useRef();
 
   const handlePrevious = () => {
@@ -18,7 +18,7 @@ const HorizontalScrollCard = ({ data, heading }) => {
 
   return (
     data && (
-      <div className="px-7 md:px-10 md:pt-7 pt-10 relative  min-h-[240px] max-h-[240px] sm:min-h-[320px] sm:max-h-[320px] md:min-h-[330px] md:max-h-[330px] lg:min-h-[360px] lg:max-h-[360px]">
+      <div className="px-7 md:px-10 md:pt-7 pt-10 relative  min-h-[240px] max-h-[240px] sm:min-h-[320px] sm:max-h-[320px] md:min-h-[330px] md:max-h-[330px] lg:min-h-[360px] lg:max-h-[360px] group">
         {/* Heading  */}
         <div className="flex justify-between items-center mb-2 md:mb-4">
           <h1 className="text-sm tracking-wide sm:text-base lg:text-lg font-medium ">
@@ -45,12 +45,12 @@ const HorizontalScrollCard = ({ data, heading }) => {
           className="relative z-20 grid grid-cols-[repeat(auto-fill, _minmax(110px,_180px))] grid-flow-col gap-3 lg:gap-5 overflow-x-auto scrollbar-hide scroll-smooth transition-all duration-700    "
         >
           {data.map((item) => {
-            return <Card key={item.id} data={item} />;
+            return <Card key={item.id} data={item} type={type}/>;
           })}
         </div>
 
         {/* Previous and Next Button */}
-        <div className="absolute top-1/2 left-0 right-0 hidden lg:flex justify-between w-full px-1 sm:px-2 lg:px-3 text-lg ">
+        <div className="absolute top-1/2 left-0 right-0 hidden group-hover:lg:flex justify-between w-full px-1 sm:px-2 lg:px-3 text-lg ">
           <button className="cursor-pointer" onClick={handlePrevious}>
             <FaAngleLeft />
           </button>

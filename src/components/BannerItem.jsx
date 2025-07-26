@@ -8,16 +8,16 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 
-const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
+const BannerItem = ({ item, type, handleRight, handleLeft, imageIndex, length }) => {
   const navigate = useNavigate()
 
 
   const {id, backdrop_path, overview, title } = item;
-  useMovieInfo(id);
+  const movieInfoData = useMovieInfo(type, id);
 
-  const movieInfoData = useSelector((store) => store.cinepeek.movieInfo);
+  // const movieInfoData = useSelector((store) => store.cinepeek.movieInfo);
 
-  if (movieInfoData.length === 0) return;
+  if (!movieInfoData) return;
 
   const { genres, release_date, runtime, vote_average } = movieInfoData;
 
@@ -72,7 +72,7 @@ const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
         </div>
 
         {/* movie info  */}
-        <div className="max-lg:flex flex-col items-center w-[300px] max-w-[300px]  sm:min-w-[440px] sm:max-w-[450px] lg:min-w-[530px]  lg:max-w-[530px] absolute top-1/2 lg:top-1/3 left-1/2 lg:left-30 max-lg:-translate-x-1/2 ">
+        <div className="z-22 max-lg:flex flex-col items-center w-[300px] max-w-[300px]  sm:min-w-[440px] sm:max-w-[450px] lg:min-w-[530px]  lg:max-w-[530px] absolute top-1/2 lg:top-1/3 left-1/2 lg:left-30 max-lg:-translate-x-1/2 ">
           {/* movie logo  */}
           {/* <img
           className="h-10 sm:h-15 md:h-20  lg:w-2xl object-contain object-left"
@@ -84,7 +84,7 @@ const BannerItem = ({ item, handleRight, handleLeft, imageIndex, length }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2 }}
-            className="font-(family-name:--font-anton) text-[var(--text-primary)] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-md max-lg:text-center tracking-wide"
+            className="font-(family-name:--font-archivo) text-[var(--text-primary)] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-md max-lg:text-center tracking-"
         
           >
             {title}

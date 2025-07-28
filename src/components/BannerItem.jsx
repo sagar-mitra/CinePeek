@@ -28,7 +28,7 @@ const BannerItem = ({ item, type, handleRight, handleLeft, imageIndex, length })
 
   return (
     item && (
-      <div className="min-w-full h-full xl:min-h-screen max-h-[900px] relative group transition-all duration-700">
+      <div className="min-w-full h-full xl:min-h-screen max-h-[900px] relative group transition-all duration-700 ">
         {/* Banner Image  */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -38,7 +38,7 @@ const BannerItem = ({ item, type, handleRight, handleLeft, imageIndex, length })
           className="w-full h-full border-b border-[var(--main-color)]"
         >
           <motion.img
-            className="w-full max-h-full min-h-[450px] md:min-h-[600px] lg:max-h-screen object-cover object-top  "
+            className="w-full  min-h-[450px] md:min-h-[600px] lg:max-h-screen lg:min-h-screen object-cover object-top  "
             src={IMAGE_URL + backdrop_path}
             alt={title}
           />

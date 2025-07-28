@@ -34,7 +34,7 @@ const Banner = ({type}) => {
 
   return (
     bannerData && (
-      <section className="max-w-screen min-h-[400px] lg:min-h-screen ">
+      <section className="max-w-screen min-h-[460px] md:min-h-[610px] lg:min-h-screen  ">
         <div className="flex w-full h-full overflow-hidden">
           {bannerData.map((item, idx) => {
             return (

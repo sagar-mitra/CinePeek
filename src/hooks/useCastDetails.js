@@ -10,8 +10,8 @@ const useCastDetails = (type, id) => {
         const res = await fetch(`https://api.themoviedb.org/3/${type}/${id}/credits?language=en-US`, API_OPTIONS);
         const data = await res.json();
         const castData = data.cast.filter((item) => item.known_for_department === "Acting");
-        const directorData = data.cast.filter((item) => item.known_for_department === "Directing")
-
+        const directorData = data.crew.filter((item) => item.known_for_department === "Directing")
+        console.log(data);
         setCastInfo(castData);
         setDirector(directorData)
 

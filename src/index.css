@@ -16,6 +16,7 @@
 
 @theme {
   --breakpoint-xs: 400px;
+  --breakpoint-tab: 800px;
 }
 
 .scrollbar-hide::-webkit-scrollbar {

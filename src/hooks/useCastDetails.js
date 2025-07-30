@@ -11,7 +11,6 @@ const useCastDetails = (type, id) => {
         const data = await res.json();
         const castData = data.cast.filter((item) => item.known_for_department === "Acting");
         const directorData = data.crew.filter((item) => item.known_for_department === "Directing")
-        console.log(data);
         setCastInfo(castData);
         setDirector(directorData)
 

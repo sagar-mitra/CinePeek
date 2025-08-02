@@ -3,7 +3,8 @@ import Header from "../src/components/Header";
 import { API_OPTIONS } from "./utils/constants";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setBannerData} from "./store/cinePeekSlice";
+import { setBannerData } from "./store/cinePeekSlice";
+import Footer from "./components/Footer";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const App = () => {
         API_OPTIONS
       );
       const nowPlayingData = await res.json();
-      dispatch(setBannerData(nowPlayingData?.results.slice(0,16)));
+      dispatch(setBannerData(nowPlayingData?.results.slice(0, 16)));
     } catch (error) {
       console.log(error);
     }
@@ -26,13 +27,11 @@ const App = () => {
     getNowPlayingMovies();
   }, []);
 
-
- 
-
   return (
-    <div className="font-(family-name:--font-inter)  bg-[var(--main-color)]">
+    <div className="font-(family-name:--font-inter) bg-[var(--main-color)] ">
       <Header />
       <Outlet />
+      <Footer />
     </div>
   );
 };

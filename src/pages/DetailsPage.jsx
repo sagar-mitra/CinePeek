@@ -2,11 +2,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import useMovieInfo from "../hooks/useMovieInfo";
 import { IMAGE_URL } from "../utils/constants";
 import useCastDetails from "../hooks/useCastDetails";
-import useImage from "../hooks/useImage";
 import MovieImagesSection from "../components/MovieImagesSection";
 import HeadingSection from "../components/DetailsPage/HeadingSection";
 import OverviewSection from "../components/DetailsPage/OverviewSection";
 import CastSection from "../components/DetailsPage/CastSection";
+import ShimmerMovieDetails from "../components/ShimmerMovieDetails";
+import { useEffect, useState } from "react";
 
 const DetailsPage = () => {
   // Destructuring the query
@@ -17,22 +18,25 @@ const DetailsPage = () => {
 
   const { castInfo, director } = useCastDetails(type, id);
 
-  // const {castInfo, director} = data
+  const isLoading = !details || !castInfo || !director;
 
-  if (!details || !castInfo || !director) return;
+  useEffect(() => {
+    if (!isLoading) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [isLoading]);
 
-  // Destructure the details
-  const { poster_path } = details;
-
-  return (
-    <div className="pt-20 sm:pt-16 lg:pt-22 max-w-screen min-h-screen text-white px-4 sm:px-8 border border-red-500">
+  return isLoading ? (
+    <ShimmerMovieDetails />
+  ) : (
+    <div className="pt-20 sm:pt-16 lg:pt-22 max-w-screen min-h-screen max-h-fit text-white px-4 sm:px-8">
       {/* Back Button  */}
 
       <div className="grid gap-5 lg:grid-cols-[1fr_2fr] xl:grid-cols-[1fr_1.7fr]">
         {/* Movie Poster & Watch Trailer Button  */}
-        <div className="w-full lg:w- flex flex-col items-center justify-center">
+        <div className="w-full flex flex-col items-center justify-center">
           <img
-            src={IMAGE_URL + poster_path}
+            src={IMAGE_URL + details.poster_path}
             alt={title}
             className="rounded-lg max-h-[400px] xs:max-h-[460px] lg:max-h-[600px] xl:max-h-[700px] mb-7"
           />
@@ -63,7 +67,7 @@ const DetailsPage = () => {
 
       <div className=" mt-2 sm:mt-4 lg:mt-10 mb-20 sm:px-12 lg:px-1">
         {/* Movie  Images */}
-        <MovieImagesSection type={type} id={id}/>
+        <MovieImagesSection type={type} id={id} />
       </div>
     </div>
   );

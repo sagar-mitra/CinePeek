@@ -60,7 +60,7 @@ const Header = () => {
       <div className="flex items-center cursor-pointer ">
         {/* logo */}
         <Link to="/" className="mr-10">
-          <h1 className="font-bold text-2xl">CinePeek</h1>
+          <h1 className="font-medium text-2xl font-(family-name:--font-logo)">CinePeek</h1>
         </Link>
         {/* Nav Items  */}
         <div className="max-sm:hidden">

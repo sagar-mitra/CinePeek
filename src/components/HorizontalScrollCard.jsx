@@ -18,7 +18,7 @@ const HorizontalScrollCard = ({ data, heading, type }) => {
 
   return (
     data && (
-      <div className="px-7 md:px-10 md:pt-7 pt-10 relative  min-h-[240px] max-h-[240px] sm:min-h-[320px] sm:max-h-[320px] md:min-h-[330px] md:max-h-[330px] lg:min-h-[360px] lg:max-h-[360px] group">
+      <div className="lg:mt-5 px-7 md:px-10 md:pt-7 pt-10 relative  min-h-[240px] max-h-[240px] sm:min-h-[320px] sm:max-h-[320px] md:min-h-[330px] md:max-h-[330px] lg:min-h-[360px] lg:max-h-[360px] group">
         {/* Heading  */}
         <div className="flex justify-between items-center mb-2 md:mb-4">
           <h1 className="text-sm tracking-wide sm:text-base lg:text-lg font-medium ">
@@ -42,7 +42,7 @@ const HorizontalScrollCard = ({ data, heading, type }) => {
         {/* Movie Cards  */}
         <div
           ref={containerRef}
-          className="relative z-20 grid grid-cols-[repeat(auto-fill, _minmax(110px,_180px))] grid-flow-col gap-3 lg:gap-5 overflow-x-auto scrollbar-hide scroll-smooth transition-all duration-700    "
+          className="relative z-20 px-3 md:py-6 grid grid-cols-[repeat(auto-fill, _minmax(110px,_180px))] grid-flow-col gap-3 lg:gap-5 overflow-y-auto overflow-x-scroll scrollbar-hide scroll-smooth transition-all duration-700"
         >
           {data.map((item) => {
             return <Card key={item.id} data={item} type={type}/>;

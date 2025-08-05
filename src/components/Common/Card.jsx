@@ -20,6 +20,7 @@ const Card = ({ data, type }) => {
           alt={title}
         />
       </motion.div>
+      
     </motion.div>
   );
 };

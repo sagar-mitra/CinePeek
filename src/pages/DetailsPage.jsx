@@ -1,13 +1,14 @@
+import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import useMovieInfo from "../hooks/useMovieInfo";
 import { IMAGE_URL } from "../utils/constants";
+import useMovieInfo from "../hooks/useMovieInfo";
 import useCastDetails from "../hooks/useCastDetails";
 import MovieImagesSection from "../components/MovieImagesSection";
 import HeadingSection from "../components/DetailsPage/HeadingSection";
 import OverviewSection from "../components/DetailsPage/OverviewSection";
 import CastSection from "../components/DetailsPage/CastSection";
 import ShimmerMovieDetails from "../components/ShimmerMovieDetails";
-import { useEffect, useState } from "react";
+
 
 const DetailsPage = () => {
   // Destructuring the query
@@ -20,6 +21,8 @@ const DetailsPage = () => {
 
   const isLoading = !details || !castInfo || !director;
 
+  console.log(castInfo);
+
   useEffect(() => {
     if (!isLoading) {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -29,7 +32,7 @@ const DetailsPage = () => {
   return isLoading ? (
     <ShimmerMovieDetails />
   ) : (
-    <div className="pt-20 sm:pt-16 lg:pt-22 max-w-screen min-h-screen max-h-fit text-white px-4 sm:px-8">
+    <div className="pt-20 sm:pt-16 lg:pt-22 max-w-screen min-h-screen max-h-fit text-white px-4 sm:px-8 ">
       {/* Back Button  */}
 
       <div className="grid gap-5 lg:grid-cols-[1fr_2fr] xl:grid-cols-[1fr_1.7fr]">

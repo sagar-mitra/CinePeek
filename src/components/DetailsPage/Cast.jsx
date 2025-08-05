@@ -1,7 +1,7 @@
-import React, { useState } from "react";
 import { DEFAULT_PP, IMAGE_URL } from "../../utils/constants";
 
 const Cast = ({ castInfo, visible }) => {
+
   return (
     <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 mt-5 ">
       {castInfo.slice(0, visible).map((cast) => {

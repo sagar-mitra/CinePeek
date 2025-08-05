@@ -1,20 +1,37 @@
-import Card from "./Common/card";
-import { FiArrowRight } from "react-icons/fi";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { FaAngleRight } from "react-icons/fa6";
+import { FiArrowRight } from "react-icons/fi";
 import { FaAngleLeft } from "react-icons/fa6";
-import { useRef } from "react";
+import { FaAngleRight } from "react-icons/fa6";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Scrollbar, Mousewheel } from "swiper/modules";
+import Card from "./Common/card";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const HorizontalScrollCard = ({ data, heading, type }) => {
-  const containerRef = useRef();
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+  const swiperRef = useRef(null);
 
-  const handlePrevious = () => {
-    containerRef.current.scrollLeft -= 500;
-  }
+  // const handlePrevious = () => {
+  //   containerRef.current.scrollLeft -= 500;
+  // };
 
-  const handleNext = () => {
-    containerRef.current.scrollLeft += 500;
-  }
+  // const handleNext = () => {
+  //   containerRef.current.scrollLeft += 500;
+  // };
+
+  useEffect(() => {
+    if (swiperRef.current && swiperRef.current.params) {
+      swiperRef.current.params.navigation.prevEl = prevRef.current;
+      swiperRef.current.params.navigation.nextEl = nextRef.current;
+      swiperRef.current.navigation.init();
+      swiperRef.current.navigation.update();
+    }
+  }, []);
 
   return (
     data && (
@@ -40,21 +57,41 @@ const HorizontalScrollCard = ({ data, heading, type }) => {
         </div>
 
         {/* Movie Cards  */}
-        <div
-          ref={containerRef}
-          className="relative z-20 px-3 md:py-6 grid grid-cols-[repeat(auto-fill, _minmax(110px,_180px))] grid-flow-col gap-3 lg:gap-5 overflow-y-auto overflow-x-scroll scrollbar-hide scroll-smooth transition-all duration-700"
+        <Swiper
+          className="!px-3 !py-6"
+          modules={[Navigation, Mousewheel, Scrollbar]}
+          mousewheel={{ forceToAxis: true }} // ✅ Horizontal scroll support
+          allowTouchMove= {true}
+          navigation={false} // disable default navigation
+          scrollbar={{ draggable: true }}
+          slidesPerGroup={3} // move 3 slides per click
+          onSwiper={(swiper) => (swiperRef.current = swiper)}
+          breakpoints={{
+            320: { slidesPerView: 3, spaceBetween: 90 }, // Mobile
+            360: { slidesPerView: 3, spaceBetween: 50 }, // Mobile
+            400: { slidesPerView: 3, spaceBetween: 20 }, // Mobile
+            600: { slidesPerView: 4, spaceBetween: 30 }, // Tablet
+            800: { slidesPerView: 5, spaceBetween: 90 }, // Tablet
+            1024: { slidesPerView: 5, spaceBetween: 30 }, // Desktop
+            1200: { slidesPerView: 6, spaceBetween: 30 }, // Desktop
+            1400: { slidesPerView: 7, spaceBetween: 20 }, // Desktop
+          }}
         >
           {data.map((item) => {
-            return <Card key={item.id} data={item} type={type}/>;
+            return (
+              <SwiperSlide key={item.id}>
+                <Card data={item} type={type} />
+              </SwiperSlide>
+            );
           })}
-        </div>
+        </Swiper>
 
         {/* Previous and Next Button */}
-        <div className="absolute top-1/2 left-0 right-0 hidden group-hover:lg:flex justify-between w-full px-1 sm:px-2 lg:px-3 text-lg ">
-          <button className="cursor-pointer" onClick={handlePrevious}>
+        <div className="absolute top-1/2 py-8 left-0 right-0 hidden group-hover:lg:flex justify-between w-full px-1 sm:px-2 lg:px-3 text-lg ">
+          <button ref={prevRef} className="cursor-pointer">
             <FaAngleLeft />
           </button>
-          <button className="cursor-pointer" onClick={handleNext}>
+          <button ref={nextRef} className="cursor-pointer">
             <FaAngleRight />
           </button>
         </div>

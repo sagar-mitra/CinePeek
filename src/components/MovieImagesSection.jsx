@@ -10,13 +10,15 @@ const MovieImagesSection = ({ type, id }) => {
 
   const { backdrops } = images;
 
+  console.log(images);
+
   const handleSeeMore = () => {
     visible === 6 ? setVisible(backdrops.length - 1) : setVisible(6);
   };
 
   return (
     <div>
-      <h1 className="text-lg sm:text-xl lg:text-xl xl:text-2xl font-bold w-fit border-b border-[var(--text-highlight)] pb-1 tracking-wide uppercase">
+      <h1 className="text-[1rem] sm:text-[1.1rem] lg:text-[1.3rem] xl:text-[1.4rem]  font-bold w-fit border-b border-[var(--text-highlight)] pb-1 tracking-wide uppercase">
         Images
       </h1>
 
@@ -51,7 +53,8 @@ const MovieImagesSection = ({ type, id }) => {
         onClick={handleSeeMore}
       >
         <span className="text-sm md:text-base hover:border-b transition-all duration-300 cursor-pointer">
-          {visible === 6 ? "See More" : "See Less"}
+          {backdrops.length < 6 ? "" : visible === 6 ? "See More" : "See Less"}
+  
         </span>
       </button>
     </div>

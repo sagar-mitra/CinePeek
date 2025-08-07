@@ -110,8 +110,8 @@ const BannerItem = ({ item, type, handleRight, handleLeft, imageIndex, length })
             <p>{`${hours}h ${minutes}m`}</p>
             <span>•</span>
             <div className="flex gap-2">
-              {genres.slice(0, 2).map((item) => {
-                return <span key={item.id}>{item.name} </span>;
+              {genres.slice(0, 2).map((item,index) => {
+                return <span key={item.id}>{item.name} {index === 0 && "/"}</span>;
               })}
             </div>
           </motion.div>

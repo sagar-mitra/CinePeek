@@ -10,8 +10,10 @@ import Card from "./Common/card";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { useNavigate } from "react-router-dom";
 
-const HorizontalScrollCard = ({ data, heading, type }) => {
+const HorizontalScrollCard = ({ data, heading, type, list }) => {
+  const navigate = useNavigate()
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const swiperRef = useRef(null);
@@ -41,11 +43,13 @@ const HorizontalScrollCard = ({ data, heading, type }) => {
           <h1 className="text-sm tracking-wide sm:text-base lg:text-lg font-medium ">
             {heading}
           </h1>
+          {/* See All Button  */}
           <motion.div
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.9 }}
             transition={{ duration: 0.4 }}
             className="flex items-center gap-0.5 cursor-pointer text-red-500"
+            onClick={() => navigate(`explore/${type}/${list}`)}
           >
             <p className="font-medium text-xs sm:text-sm tracking-wide">
               See All
@@ -80,7 +84,7 @@ const HorizontalScrollCard = ({ data, heading, type }) => {
           {data.map((item) => {
             return (
               <SwiperSlide key={item.id}>
-                <Card data={item} type={type} />
+                <Card data={item} type={type}/>
               </SwiperSlide>
             );
           })}

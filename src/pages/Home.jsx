@@ -20,26 +20,31 @@ const Home = () => {
           heading="Trending Movies"
           data={trendingData}
           type="movie"
+          list= "now_playing"
         />
         <HorizontalScrollCard
           heading="Top Rated Movies"
-          data={topRatedData}
+          data={topRatedData.results}
           type="movie"
+          list= "top_rated"
         />
         <HorizontalScrollCard
           heading="Popular Movies"
-          data={popularData}
+          data={popularData.results}
           type="movie"
+          list= "popular"
         />
         <HorizontalScrollCard
           heading="Upcoming Movies"
-          data={upcomingData}
+          data={upcomingData.results}
           type="movie"
+          list= "upcoming"
         />
         <HorizontalScrollCard
           heading="Popular TV Series"
-          data={popularTVData}
+          data={popularTVData.results}
           type="tv"
+          list= "popular"
         />
       </div>
     </div>

@@ -1,5 +1,5 @@
-import useImage from "../hooks/useImage";
-import { IMAGE_URL } from "../utils/constants";
+import useImage from "../../hooks/useImage";
+import { IMAGE_URL } from "../../utils/constants";
 import { useState } from "react";
 
 const MovieImagesSection = ({ type, id }) => {

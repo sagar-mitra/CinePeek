@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { IMAGE_URL } from "../utils/constants";
 import useMovieInfo from "../hooks/useMovieInfo";
 import useCastDetails from "../hooks/useCastDetails";
-import MovieImagesSection from "../components/MovieImagesSection";
+import MovieImagesSection from "../components/DetailsPage/MovieImagesSection";
 import HeadingSection from "../components/DetailsPage/HeadingSection";
 import OverviewSection from "../components/DetailsPage/OverviewSection";
 import CastSection from "../components/DetailsPage/CastSection";

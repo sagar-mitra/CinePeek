@@ -36,7 +36,7 @@ const Pagination = ({ page, setPage }) => {
   };
 
   return (
-    <div className="mt-8 py-4  flex gap-1 sm:gap-3 lg:gap-8 items-center justify-center">
+    <div className="mt-8 py-4 ` flex gap-1 sm:gap-3 lg:gap-8 items-center justify-center">
       {/* Previous Button  */}
       <div
         className={`border-2 px-1 py-1 sm:px-2 sm:py-2 rounded-full cursor-pointer ${

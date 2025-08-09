@@ -17,7 +17,7 @@ const ExplorePage = () => {
   };
 
   const data = useFetch(type, list, page);
-  const { results, total_pages } = data;
+  const { results } = data;
 
 
 

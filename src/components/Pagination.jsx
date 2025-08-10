@@ -12,7 +12,6 @@ const Pagination = ({ page, setPage }) => {
 
   // Merge prev + next pages
   const paginationPages = [...prevPages, page, ...nextPages];
-  console.log(paginationPages);
 
   const totalPages = 20;
 

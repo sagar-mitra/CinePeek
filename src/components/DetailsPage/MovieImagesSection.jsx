@@ -10,8 +10,6 @@ const MovieImagesSection = ({ type, id }) => {
 
   const { backdrops } = images;
 
-  console.log(images);
-
   const handleSeeMore = () => {
     visible === 6 ? setVisible(backdrops.length - 1) : setVisible(6);
   };

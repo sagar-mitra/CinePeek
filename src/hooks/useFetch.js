@@ -12,7 +12,6 @@ const useFetch = (type, list, page = 1) => {
       );
       const resData = await res.json();
       setData(resData)
-      console.log(resData);
     } catch (error) {
         console.log("Error: ", error);
     }

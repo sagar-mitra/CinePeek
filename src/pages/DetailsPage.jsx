@@ -21,7 +21,6 @@ const DetailsPage = () => {
 
   const isLoading = !details || !castInfo || !director;
 
-  console.log(castInfo);
 
   useEffect(() => {
     if (!isLoading) {

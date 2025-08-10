@@ -10,7 +10,7 @@ const useGetLogo = (id) => {
       API_OPTIONS
     );
     const logoData = await res.json();
-    console.log(logoData);
+  
     setLogo(logoData?.backdrops[4]?.file_path)
   };
 
